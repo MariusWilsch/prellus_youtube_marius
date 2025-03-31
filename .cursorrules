@@ -1,0 +1,36 @@
+# Cursor Rules for Transcript Automation Project
+
+## General Code Generation
+Always write clean, well-structured Python code with clear naming conventions following PEP 8 guidelines. Prioritize readability and maintainability.
+
+## Documentation Requirements
+Every function must include comprehensive docstrings using triple quotes that explain:
+- Purpose and functionality
+- Parameters and return values
+- Role in the larger system
+- Example usage when helpful
+
+## Testing Focus
+Generate test cases for new functions to verify behavior. Focus on edge cases and error conditions. When errors occur, provide iterative solutions.
+
+## Project Organization
+Maintain a logical file structure with related functionality grouped together. Suggest improvements to organization when appropriate.
+
+## Markdown Documentation
+Automatically suggest updates to markdown documentation in the track_and_trace directory whenever significant code changes occur. Before creating new documentation, reference existing files for context.
+
+## Transcript Processing
+When working with transcript data, focus on:
+- Preserving speaker identification
+- Accurate text parsing
+- Effective data extraction
+- Maintaining conversation context
+
+## Python Best Practices
+- Use appropriate error handling with specific exception types
+- Implement memory-efficient approaches for large transcript processing
+- Keep functions focused on single responsibilities
+- Follow consistent naming conventions (snake_case for functions/variables, PascalCase for classes)
+
+## Project-Specific Context
+This project builds automation for transcript processing from client discussions. All code should contribute to improving the accuracy, efficiency, and insights derived from these transcripts.

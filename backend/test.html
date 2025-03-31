@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>YouTube Transcript Processor - API Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #4285f4;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #3b78e7;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+            white-space: pre-wrap;
+        }
+        .error {
+            color: red;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>YouTube Transcript Processor - API Test</h1>
+    <p>Use this form to test the backend API directly, without the React frontend.</p>
+    
+    <div class="form-group">
+        <label for="url">YouTube URL:</label>
+        <input type="text" id="url" placeholder="https://www.youtube.com/watch?v=..." value="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+    </div>
+    
+    <div class="form-group">
+        <label for="prompt">Custom Prompt (optional):</label>
+        <textarea id="prompt" rows="4" placeholder="Enter custom processing instructions...">This is a test prompt</textarea>
+    </div>
+    
+    <div class="form-group">
+        <label for="duration">Duration (minutes):</label>
+        <input type="number" id="duration" value="30" min="1">
+    </div>
+    
+    <button onclick="testApi()">Test API</button>
+    <button onclick="testConnection()">Test Connection</button>
+    
+    <div id="error" class="error" style="display: none;"></div>
+    <div id="result" class="result" style="display: none;"></div>
+    
+    <script>
+        // Test the API endpoint
+        async function testApi() {
+            const url = document.getElementById('url').value;
+            const prompt = document.getElementById('prompt').value;
+            const duration = parseInt(document.getElementById('duration').value);
+            
+            const resultDiv = document.getElementById('result');
+            const errorDiv = document.getElementById('error');
+            
+            resultDiv.style.display = 'none';
+            errorDiv.style.display = 'none';
+            
+            // Simple validation
+            if (!url) {
+                errorDiv.textContent = 'Please enter a YouTube URL';
+                errorDiv.style.display = 'block';
+                return;
+            }
+            
+            try {
+                resultDiv.textContent = 'Sending request to API...';
+                resultDiv.style.display = 'block';
+                
+                // Make API request
+                const response = await fetch('http://localhost:5000/api/transcripts/process', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        url,
+                        prompt,
+                        duration
+                    })
+                });
+                
+                // Check for successful response
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                // Parse and display the response
+                const data = await response.json();
+                resultDiv.textContent = `API Response:\n${JSON.stringify(data, null, 2)}`;
+                resultDiv.style.display = 'block';
+                
+            } catch (error) {
+                errorDiv.textContent = `Error: ${error.message}`;
+                errorDiv.style.display = 'block';
+                console.error('API test error:', error);
+            }
+        }
+        
+        // Test basic API connectivity
+        async function testConnection() {
+            const resultDiv = document.getElementById('result');
+            const errorDiv = document.getElementById('error');
+            
+            resultDiv.style.display = 'none';
+            errorDiv.style.display = 'none';
+            
+            try {
+                resultDiv.textContent = 'Testing API connection...';
+                resultDiv.style.display = 'block';
+                
+                // Make API request to test endpoint
+                const response = await fetch('http://localhost:5000/api/test');
+                
+                // Check for successful response
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                
+                // Parse and display the response
+                const data = await response.json();
+                resultDiv.textContent = `Connection test successful!\nResponse: ${JSON.stringify(data, null, 2)}`;
+                
+            } catch (error) {
+                errorDiv.textContent = `Connection Error: ${error.message}`;
+                errorDiv.style.display = 'block';
+                resultDiv.style.display = 'none';
+                console.error('Connection test error:', error);
+            }
+        }
+    </script>
+</body>
+</html> 

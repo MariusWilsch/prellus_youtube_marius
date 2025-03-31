@@ -1,0 +1,804 @@
+.
+├── README
+├── README.md
+├── backend
+│   ├── README.md
+│   ├── backend.log
+│   ├── backend_log.txt
+│   ├── backend_server.log
+│   ├── data
+│   │   ├── stored_prompts
+│   │   │   └── 5ff887de-62ee-4078-825d-ac036aab8461.json
+│   │   └── transcripts
+│   │       ├── 3XddBYdBkxo_20250330_184135
+│   │       │   ├── audio
+│   │       │   │   ├── audio_narrative_transcript.wav
+│   │       │   │   └── audio_narrative_transcript_metadata.json
+│   │       │   ├── final
+│   │       │   ├── metadata.json
+│   │       │   ├── processed
+│   │       │   │   ├── expansion_chunks
+│   │       │   │   │   ├── original_segment_1.txt
+│   │       │   │   │   ├── original_segment_10.txt
+│   │       │   │   │   ├── original_segment_2.txt
+│   │       │   │   │   ├── original_segment_3.txt
+│   │       │   │   │   ├── original_segment_4.txt
+│   │       │   │   │   ├── original_segment_5.txt
+│   │       │   │   │   ├── original_segment_6.txt
+│   │       │   │   │   ├── original_segment_7.txt
+│   │       │   │   │   ├── original_segment_8.txt
+│   │       │   │   │   ├── original_segment_9.txt
+│   │       │   │   │   ├── processed_chapter_1.txt
+│   │       │   │   │   ├── processed_chapter_10.txt
+│   │       │   │   │   ├── processed_chapter_2.txt
+│   │       │   │   │   ├── processed_chapter_3.txt
+│   │       │   │   │   ├── processed_chapter_4.txt
+│   │       │   │   │   ├── processed_chapter_5.txt
+│   │       │   │   │   ├── processed_chapter_6.txt
+│   │       │   │   │   ├── processed_chapter_7.txt
+│   │       │   │   │   ├── processed_chapter_8.txt
+│   │       │   │   │   ├── processed_chapter_9.txt
+│   │       │   │   │   ├── prompt_segment_1.txt
+│   │       │   │   │   ├── prompt_segment_10.txt
+│   │       │   │   │   ├── prompt_segment_2.txt
+│   │       │   │   │   ├── prompt_segment_3.txt
+│   │       │   │   │   ├── prompt_segment_4.txt
+│   │       │   │   │   ├── prompt_segment_5.txt
+│   │       │   │   │   ├── prompt_segment_6.txt
+│   │       │   │   │   ├── prompt_segment_7.txt
+│   │       │   │   │   ├── prompt_segment_8.txt
+│   │       │   │   │   └── prompt_segment_9.txt
+│   │       │   │   ├── expansion_chunks_info.json
+│   │       │   │   ├── master_document.txt
+│   │       │   │   ├── narrative_transcript.json
+│   │       │   │   └── narrative_transcript.txt
+│   │       │   ├── prompt_structure.json
+│   │       │   └── raw
+│   │       │       ├── transcript.json
+│   │       │       └── transcript.txt
+│   │       ├── CT0_rjef3DY_20250330_133859
+│   │       │   ├── audio
+│   │       │   ├── final
+│   │       │   ├── metadata.json
+│   │       │   ├── processed
+│   │       │   │   ├── expansion_chunks
+│   │       │   │   │   ├── original_segment_1.txt
+│   │       │   │   │   ├── original_segment_10.txt
+│   │       │   │   │   ├── original_segment_11.txt
+│   │       │   │   │   ├── original_segment_12.txt
+│   │       │   │   │   ├── original_segment_13.txt
+│   │       │   │   │   ├── original_segment_14.txt
+│   │       │   │   │   ├── original_segment_15.txt
+│   │       │   │   │   ├── original_segment_2.txt
+│   │       │   │   │   ├── original_segment_3.txt
+│   │       │   │   │   ├── original_segment_4.txt
+│   │       │   │   │   ├── original_segment_5.txt
+│   │       │   │   │   ├── original_segment_6.txt
+│   │       │   │   │   ├── original_segment_7.txt
+│   │       │   │   │   ├── original_segment_8.txt
+│   │       │   │   │   ├── original_segment_9.txt
+│   │       │   │   │   ├── processed_chapter_1.txt
+│   │       │   │   │   ├── processed_chapter_10.txt
+│   │       │   │   │   ├── processed_chapter_11.txt
+│   │       │   │   │   ├── processed_chapter_12.txt
+│   │       │   │   │   ├── processed_chapter_13.txt
+│   │       │   │   │   ├── processed_chapter_14.txt
+│   │       │   │   │   ├── processed_chapter_15.txt
+│   │       │   │   │   ├── processed_chapter_2.txt
+│   │       │   │   │   ├── processed_chapter_3.txt
+│   │       │   │   │   ├── processed_chapter_4.txt
+│   │       │   │   │   ├── processed_chapter_5.txt
+│   │       │   │   │   ├── processed_chapter_6.txt
+│   │       │   │   │   ├── processed_chapter_7.txt
+│   │       │   │   │   ├── processed_chapter_8.txt
+│   │       │   │   │   ├── processed_chapter_9.txt
+│   │       │   │   │   ├── prompt_segment_1.txt
+│   │       │   │   │   ├── prompt_segment_10.txt
+│   │       │   │   │   ├── prompt_segment_11.txt
+│   │       │   │   │   ├── prompt_segment_12.txt
+│   │       │   │   │   ├── prompt_segment_13.txt
+│   │       │   │   │   ├── prompt_segment_14.txt
+│   │       │   │   │   ├── prompt_segment_15.txt
+│   │       │   │   │   ├── prompt_segment_2.txt
+│   │       │   │   │   ├── prompt_segment_3.txt
+│   │       │   │   │   ├── prompt_segment_4.txt
+│   │       │   │   │   ├── prompt_segment_5.txt
+│   │       │   │   │   ├── prompt_segment_6.txt
+│   │       │   │   │   ├── prompt_segment_7.txt
+│   │       │   │   │   ├── prompt_segment_8.txt
+│   │       │   │   │   └── prompt_segment_9.txt
+│   │       │   │   ├── expansion_chunks_info.json
+│   │       │   │   ├── master_document.txt
+│   │       │   │   ├── narrative_transcript.json
+│   │       │   │   └── narrative_transcript.txt
+│   │       │   ├── prompt_structure.json
+│   │       │   └── raw
+│   │       │       ├── transcript.json
+│   │       │       └── transcript.txt
+│   │       ├── CT0_rjef3DY_20250330_140523
+│   │       │   ├── audio
+│   │       │   │   ├── audio_narrative_transcript.wav
+│   │       │   │   └── audio_narrative_transcript_metadata.json
+│   │       │   ├── final
+│   │       │   ├── metadata.json
+│   │       │   ├── processed
+│   │       │   │   ├── chapter_chunks
+│   │       │   │   │   ├── processed_chapter_chunk_1.txt
+│   │       │   │   │   ├── processed_chapter_chunk_2.txt
+│   │       │   │   │   ├── processed_chapter_chunk_3.txt
+│   │       │   │   │   └── processed_chapter_chunk_4.txt
+│   │       │   │   ├── master_document.txt
+│   │       │   │   ├── master_document_prompt.txt
+│   │       │   │   ├── narrative_transcript.json
+│   │       │   │   └── narrative_transcript.txt
+│   │       │   ├── prompt_structure.json
+│   │       │   └── raw
+│   │       │       ├── transcript.json
+│   │       │       └── transcript.txt
+│   │       ├── CT0_rjef3DY_20250330_151435
+│   │       │   ├── audio
+│   │       │   ├── final
+│   │       │   ├── metadata.json
+│   │       │   ├── processed
+│   │       │   │   ├── chapter_chunks
+│   │       │   │   │   ├── processed_chapter_chunk_1.txt
+│   │       │   │   │   ├── processed_chapter_chunk_2.txt
+│   │       │   │   │   ├── processed_chapter_chunk_3.txt
+│   │       │   │   │   ├── processed_chapter_chunk_4.txt
+│   │       │   │   │   └── processed_chapter_chunk_5.txt
+│   │       │   │   ├── master_document.txt
+│   │       │   │   ├── master_document_prompt.txt
+│   │       │   │   ├── narrative_transcript.json
+│   │       │   │   └── narrative_transcript.txt
+│   │       │   ├── prompt_structure.json
+│   │       │   └── raw
+│   │       │       ├── transcript.json
+│   │       │       └── transcript.txt
+│   │       ├── CT0_rjef3DY_20250330_153057
+│   │       │   ├── audio
+│   │       │   ├── final
+│   │       │   ├── metadata.json
+│   │       │   ├── processed
+│   │       │   │   ├── narrative_transcript.json
+│   │       │   │   └── narrative_transcript.txt
+│   │       │   ├── prompt_structure.json
+│   │       │   └── raw
+│   │       │       ├── transcript.json
+│   │       │       └── transcript.txt
+│   │       ├── CT0_rjef3DY_20250330_183921
+│   │       │   ├── audio
+│   │       │   ├── final
+│   │       │   ├── metadata.json
+│   │       │   ├── processed
+│   │       │   │   ├── chapter_chunks
+│   │       │   │   │   ├── processed_chapter_chunk_1.txt
+│   │       │   │   │   ├── processed_chapter_chunk_2.txt
+│   │       │   │   │   ├── processed_chapter_chunk_3.txt
+│   │       │   │   │   ├── processed_chapter_chunk_4.txt
+│   │       │   │   │   ├── processed_chapter_chunk_5.txt
+│   │       │   │   │   ├── processed_chapter_chunk_6.txt
+│   │       │   │   │   ├── processed_chapter_chunk_7.txt
+│   │       │   │   │   ├── processed_chapter_chunk_8.txt
+│   │       │   │   │   └── processed_chapter_chunk_9.txt
+│   │       │   │   ├── master_document.txt
+│   │       │   │   └── master_document_prompt.txt
+│   │       │   ├── prompt_structure.json
+│   │       │   └── raw
+│   │       │       ├── transcript.json
+│   │       │       └── transcript.txt
+│   │       └── CT0_rjef3DY_20250330_183934
+│   │           ├── audio
+│   │           ├── final
+│   │           ├── metadata.json
+│   │           ├── processed
+│   │           │   ├── chapter_chunks
+│   │           │   │   ├── processed_chapter_chunk_1.txt
+│   │           │   │   └── processed_chapter_chunk_2.txt
+│   │           │   ├── master_document.txt
+│   │           │   └── master_document_prompt.txt
+│   │           ├── prompt_structure.json
+│   │           └── raw
+│   │               ├── transcript.json
+│   │               └── transcript.txt
+│   ├── minimal_test.log
+│   ├── port5001_server.log
+│   ├── port5001_server.py
+│   ├── requirements.txt
+│   ├── test.html
+│   └── youtube_to_audio.log
+├── backend.pid
+├── check_dependencies.py
+├── clean_git_history.sh
+├── config
+│   └── config.yaml
+├── config.yaml
+├── data
+│   ├── output
+│   ├── test_output
+│   │   ├── test_tss_audio.wav
+│   │   └── test_tss_audio_metadata.json
+│   ├── transcripts
+│   │   ├── 2kpGx9ho02g_20250326_141548
+│   │   │   ├── audio
+│   │   │   ├── final
+│   │   │   ├── metadata.json
+│   │   │   ├── processed
+│   │   │   │   ├── chapter_chunks
+│   │   │   │   │   ├── original_chapter_chunk_1.txt
+│   │   │   │   │   ├── original_chapter_chunk_2.txt
+│   │   │   │   │   ├── original_chapter_chunk_3.txt
+│   │   │   │   │   ├── original_chapter_chunk_4.txt
+│   │   │   │   │   ├── original_chapter_chunk_5.txt
+│   │   │   │   │   ├── processed_chapter_chunk_1.txt
+│   │   │   │   │   ├── processed_chapter_chunk_2.txt
+│   │   │   │   │   ├── processed_chapter_chunk_3.txt
+│   │   │   │   │   ├── processed_chapter_chunk_4.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_1.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_2.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_3.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_4.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_5.txt
+│   │   │   │   │   ├── simplified_prompt_chapter_chunk_1.txt
+│   │   │   │   │   └── simplified_prompt_chapter_chunk_4.txt
+│   │   │   │   ├── chapter_chunks_info.json
+│   │   │   │   ├── chapters_info.json
+│   │   │   │   ├── master_document.txt
+│   │   │   │   └── master_document_prompt.txt
+│   │   │   └── raw
+│   │   │       ├── transcript.json
+│   │   │       └── transcript.txt
+│   │   ├── 2kpGx9ho02g_20250326_142655
+│   │   │   ├── audio
+│   │   │   ├── final
+│   │   │   ├── metadata.json
+│   │   │   ├── processed
+│   │   │   │   ├── chapter_chunks
+│   │   │   │   │   ├── original_chapter_chunk_1.txt
+│   │   │   │   │   ├── original_chapter_chunk_2.txt
+│   │   │   │   │   ├── original_chapter_chunk_3.txt
+│   │   │   │   │   ├── original_chapter_chunk_4.txt
+│   │   │   │   │   ├── processed_chapter_chunk_1.txt
+│   │   │   │   │   ├── processed_chapter_chunk_2.txt
+│   │   │   │   │   ├── processed_chapter_chunk_3.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_1.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_2.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_3.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_4.txt
+│   │   │   │   │   └── simplified_prompt_chapter_chunk_3.txt
+│   │   │   │   ├── chapter_chunks_info.json
+│   │   │   │   ├── chapters_info.json
+│   │   │   │   ├── master_document.txt
+│   │   │   │   └── master_document_prompt.txt
+│   │   │   └── raw
+│   │   │       ├── transcript.json
+│   │   │       └── transcript.txt
+│   │   ├── 2kpGx9ho02g_20250326_143238
+│   │   │   ├── audio
+│   │   │   │   ├── audio_narrative_transcript.wav
+│   │   │   │   └── audio_narrative_transcript_metadata.json
+│   │   │   ├── final
+│   │   │   ├── metadata.json
+│   │   │   ├── processed
+│   │   │   │   ├── chapter_chunks
+│   │   │   │   │   ├── chunk_10_chapters_10.txt
+│   │   │   │   │   ├── chunk_11_chapters_11.txt
+│   │   │   │   │   ├── chunk_12_chapters_12.txt
+│   │   │   │   │   ├── chunk_1_chapters_1.txt
+│   │   │   │   │   ├── chunk_2_chapters_2.txt
+│   │   │   │   │   ├── chunk_3_chapters_3.txt
+│   │   │   │   │   ├── chunk_4_chapters_4.txt
+│   │   │   │   │   ├── chunk_5_chapters_5.txt
+│   │   │   │   │   ├── chunk_6_chapters_6.txt
+│   │   │   │   │   ├── chunk_7_chapters_7.txt
+│   │   │   │   │   ├── chunk_8_chapters_8.txt
+│   │   │   │   │   ├── chunk_9_chapters_9.txt
+│   │   │   │   │   ├── original_chapter_chunk_1.txt
+│   │   │   │   │   ├── original_chapter_chunk_10.txt
+│   │   │   │   │   ├── original_chapter_chunk_11.txt
+│   │   │   │   │   ├── original_chapter_chunk_12.txt
+│   │   │   │   │   ├── original_chapter_chunk_2.txt
+│   │   │   │   │   ├── original_chapter_chunk_3.txt
+│   │   │   │   │   ├── original_chapter_chunk_4.txt
+│   │   │   │   │   ├── original_chapter_chunk_5.txt
+│   │   │   │   │   ├── original_chapter_chunk_6.txt
+│   │   │   │   │   ├── original_chapter_chunk_7.txt
+│   │   │   │   │   ├── original_chapter_chunk_8.txt
+│   │   │   │   │   ├── original_chapter_chunk_9.txt
+│   │   │   │   │   ├── processed_chapter_chunk_1.txt
+│   │   │   │   │   ├── processed_chapter_chunk_10.txt
+│   │   │   │   │   ├── processed_chapter_chunk_11.txt
+│   │   │   │   │   ├── processed_chapter_chunk_12.txt
+│   │   │   │   │   ├── processed_chapter_chunk_2.txt
+│   │   │   │   │   ├── processed_chapter_chunk_3.txt
+│   │   │   │   │   ├── processed_chapter_chunk_4.txt
+│   │   │   │   │   ├── processed_chapter_chunk_5.txt
+│   │   │   │   │   ├── processed_chapter_chunk_6.txt
+│   │   │   │   │   ├── processed_chapter_chunk_7.txt
+│   │   │   │   │   ├── processed_chapter_chunk_8.txt
+│   │   │   │   │   ├── processed_chapter_chunk_9.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_1.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_10.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_11.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_12.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_2.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_3.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_4.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_5.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_6.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_7.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_8.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_9.txt
+│   │   │   │   │   ├── simplified_prompt_chapter_chunk_10.txt
+│   │   │   │   │   ├── simplified_prompt_chapter_chunk_11.txt
+│   │   │   │   │   └── simplified_prompt_chapter_chunk_8.txt
+│   │   │   │   ├── chapter_chunks_info.json
+│   │   │   │   ├── chapter_chunks_processing_info.json
+│   │   │   │   ├── chapters_info.json
+│   │   │   │   ├── master_document.txt
+│   │   │   │   ├── master_document_prompt.txt
+│   │   │   │   ├── narrative_transcript.json
+│   │   │   │   └── narrative_transcript.txt
+│   │   │   └── raw
+│   │   │       ├── transcript.json
+│   │   │       └── transcript.txt
+│   │   ├── CskfvgEItPA_20250323_143609
+│   │   │   ├── metadata.json
+│   │   │   └── processed
+│   │   │       ├── chapter_chunks
+│   │   │       │   ├── chunk_1_chapters_1-2-3.txt
+│   │   │       │   ├── chunk_2_chapters_4-5-6.txt
+│   │   │       │   ├── chunk_3_chapters_7-8-9.txt
+│   │   │       │   ├── chunk_4_chapters_10-11-12.txt
+│   │   │       │   ├── chunk_5_chapters_13-14-15.txt
+│   │   │       │   ├── chunk_6_chapters_16-17-18.txt
+│   │   │       │   ├── chunk_7_chapters_19-20-21.txt
+│   │   │       │   ├── chunk_8_chapters_22-23-24.txt
+│   │   │       │   ├── chunk_9_chapters_25-26.txt
+│   │   │       │   ├── original_chapter_chunk_1.txt
+│   │   │       │   ├── original_chapter_chunk_2.txt
+│   │   │       │   ├── original_chapter_chunk_3.txt
+│   │   │       │   ├── original_chapter_chunk_4.txt
+│   │   │       │   ├── original_chapter_chunk_5.txt
+│   │   │       │   ├── original_chapter_chunk_6.txt
+│   │   │       │   ├── original_chapter_chunk_7.txt
+│   │   │       │   ├── original_chapter_chunk_8.txt
+│   │   │       │   ├── original_chapter_chunk_9.txt
+│   │   │       │   ├── processed_chapter_chunk_1.txt
+│   │   │       │   ├── processed_chapter_chunk_2.txt
+│   │   │       │   ├── processed_chapter_chunk_3.txt
+│   │   │       │   ├── processed_chapter_chunk_4.txt
+│   │   │       │   ├── processed_chapter_chunk_5.txt
+│   │   │       │   ├── processed_chapter_chunk_6.txt
+│   │   │       │   ├── processed_chapter_chunk_7.txt
+│   │   │       │   ├── processed_chapter_chunk_8.txt
+│   │   │       │   ├── processed_chapter_chunk_9.txt
+│   │   │       │   ├── prompt_chapter_chunk_1.txt
+│   │   │       │   ├── prompt_chapter_chunk_2.txt
+│   │   │       │   ├── prompt_chapter_chunk_3.txt
+│   │   │       │   ├── prompt_chapter_chunk_4.txt
+│   │   │       │   ├── prompt_chapter_chunk_5.txt
+│   │   │       │   ├── prompt_chapter_chunk_6.txt
+│   │   │       │   ├── prompt_chapter_chunk_7.txt
+│   │   │       │   ├── prompt_chapter_chunk_8.txt
+│   │   │       │   ├── prompt_chapter_chunk_9.txt
+│   │   │       │   ├── simplified_prompt_chapter_chunk_5.txt
+│   │   │       │   └── simplified_prompt_chapter_chunk_6.txt
+│   │   │       ├── chapter_chunks_info.json
+│   │   │       ├── chapter_chunks_processing_info.json
+│   │   │       ├── chapters_info.json
+│   │   │       ├── master_document.txt
+│   │   │       ├── master_document_prompt.txt
+│   │   │       ├── narrative_transcript.json
+│   │   │       └── narrative_transcript.txt
+│   │   ├── E1_xbyIYM5I_20250326_142423
+│   │   │   ├── audio
+│   │   │   ├── final
+│   │   │   ├── metadata.json
+│   │   │   ├── processed
+│   │   │   │   ├── narrative_transcript.json
+│   │   │   │   └── narrative_transcript.txt
+│   │   │   └── raw
+│   │   │       ├── transcript.json
+│   │   │       └── transcript.txt
+│   │   ├── E1_xbyIYM5I_20250326_142502
+│   │   │   ├── audio
+│   │   │   ├── final
+│   │   │   ├── metadata.json
+│   │   │   ├── processed
+│   │   │   │   ├── narrative_transcript.json
+│   │   │   │   └── narrative_transcript.txt
+│   │   │   └── raw
+│   │   │       ├── transcript.json
+│   │   │       └── transcript.txt
+│   │   ├── sHEwTKEDVM0_20250326_131506
+│   │   │   ├── audio
+│   │   │   ├── final
+│   │   │   ├── metadata.json
+│   │   │   ├── processed
+│   │   │   │   ├── chapter_chunks
+│   │   │   │   │   ├── original_chapter_chunk_1.txt
+│   │   │   │   │   ├── original_chapter_chunk_2.txt
+│   │   │   │   │   ├── original_chapter_chunk_3.txt
+│   │   │   │   │   ├── original_chapter_chunk_4.txt
+│   │   │   │   │   ├── processed_chapter_chunk_1.txt
+│   │   │   │   │   ├── processed_chapter_chunk_2.txt
+│   │   │   │   │   ├── processed_chapter_chunk_3.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_1.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_2.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_3.txt
+│   │   │   │   │   └── prompt_chapter_chunk_4.txt
+│   │   │   │   ├── chapter_chunks_info.json
+│   │   │   │   ├── chapters_info.json
+│   │   │   │   ├── master_document.txt
+│   │   │   │   └── master_document_prompt.txt
+│   │   │   └── raw
+│   │   │       ├── transcript.json
+│   │   │       └── transcript.txt
+│   │   ├── sHEwTKEDVM0_20250326_131830
+│   │   │   ├── audio
+│   │   │   ├── final
+│   │   │   ├── metadata.json
+│   │   │   ├── processed
+│   │   │   │   ├── chapter_chunks
+│   │   │   │   │   ├── original_chapter_chunk_1.txt
+│   │   │   │   │   ├── original_chapter_chunk_2.txt
+│   │   │   │   │   ├── processed_chapter_chunk_1.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_1.txt
+│   │   │   │   │   └── prompt_chapter_chunk_2.txt
+│   │   │   │   ├── chapter_chunks_info.json
+│   │   │   │   ├── chapters_info.json
+│   │   │   │   ├── master_document.txt
+│   │   │   │   └── master_document_prompt.txt
+│   │   │   └── raw
+│   │   │       ├── transcript.json
+│   │   │       └── transcript.txt
+│   │   ├── sHEwTKEDVM0_20250326_132138
+│   │   │   ├── audio
+│   │   │   ├── final
+│   │   │   ├── metadata.json
+│   │   │   ├── processed
+│   │   │   │   ├── chapter_chunks
+│   │   │   │   │   ├── chunk_1_chapters_1-2-3-4-5-6-7-8-9-10.txt
+│   │   │   │   │   ├── chunk_2_chapters_11-12-13-14-15-16-17-18-19-20.txt
+│   │   │   │   │   ├── chunk_3_chapters_21-22-23-24-25-26-27-28-29-30.txt
+│   │   │   │   │   ├── original_chapter_chunk_1.txt
+│   │   │   │   │   ├── original_chapter_chunk_2.txt
+│   │   │   │   │   ├── original_chapter_chunk_3.txt
+│   │   │   │   │   ├── processed_chapter_chunk_1.txt
+│   │   │   │   │   ├── processed_chapter_chunk_2.txt
+│   │   │   │   │   ├── processed_chapter_chunk_3.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_1.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_2.txt
+│   │   │   │   │   └── prompt_chapter_chunk_3.txt
+│   │   │   │   ├── chapter_chunks_info.json
+│   │   │   │   ├── chapter_chunks_processing_info.json
+│   │   │   │   ├── chapters_info.json
+│   │   │   │   ├── master_document.txt
+│   │   │   │   ├── master_document_prompt.txt
+│   │   │   │   ├── narrative_transcript.json
+│   │   │   │   └── narrative_transcript.txt
+│   │   │   └── raw
+│   │   │       ├── transcript.json
+│   │   │       └── transcript.txt
+│   │   ├── sHEwTKEDVM0_20250326_133653
+│   │   │   ├── audio
+│   │   │   ├── final
+│   │   │   ├── metadata.json
+│   │   │   ├── processed
+│   │   │   │   ├── chapter_chunks
+│   │   │   │   │   ├── original_chapter_chunk_1.txt
+│   │   │   │   │   ├── original_chapter_chunk_2.txt
+│   │   │   │   │   ├── processed_chapter_chunk_1.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_1.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_2.txt
+│   │   │   │   │   └── simplified_prompt_chapter_chunk_1.txt
+│   │   │   │   ├── chapter_chunks_info.json
+│   │   │   │   ├── chapters_info.json
+│   │   │   │   ├── master_document.txt
+│   │   │   │   └── master_document_prompt.txt
+│   │   │   └── raw
+│   │   │       ├── transcript.json
+│   │   │       └── transcript.txt
+│   │   ├── sHEwTKEDVM0_20250326_134647
+│   │   │   ├── audio
+│   │   │   ├── final
+│   │   │   ├── metadata.json
+│   │   │   ├── processed
+│   │   │   │   ├── chapter_chunks
+│   │   │   │   │   ├── chunk_1_chapters_1.txt
+│   │   │   │   │   ├── chunk_2_chapters_2.txt
+│   │   │   │   │   ├── chunk_3_chapters_3.txt
+│   │   │   │   │   ├── chunk_4_chapters_4.txt
+│   │   │   │   │   ├── chunk_5_chapters_5.txt
+│   │   │   │   │   ├── original_chapter_chunk_1.txt
+│   │   │   │   │   ├── original_chapter_chunk_2.txt
+│   │   │   │   │   ├── original_chapter_chunk_3.txt
+│   │   │   │   │   ├── original_chapter_chunk_4.txt
+│   │   │   │   │   ├── original_chapter_chunk_5.txt
+│   │   │   │   │   ├── processed_chapter_chunk_1.txt
+│   │   │   │   │   ├── processed_chapter_chunk_2.txt
+│   │   │   │   │   ├── processed_chapter_chunk_3.txt
+│   │   │   │   │   ├── processed_chapter_chunk_4.txt
+│   │   │   │   │   ├── processed_chapter_chunk_5.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_1.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_2.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_3.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_4.txt
+│   │   │   │   │   └── prompt_chapter_chunk_5.txt
+│   │   │   │   ├── chapter_chunks_info.json
+│   │   │   │   ├── chapter_chunks_processing_info.json
+│   │   │   │   ├── chapters_info.json
+│   │   │   │   ├── master_document.txt
+│   │   │   │   ├── master_document_prompt.txt
+│   │   │   │   ├── narrative_transcript.json
+│   │   │   │   └── narrative_transcript.txt
+│   │   │   └── raw
+│   │   │       ├── transcript.json
+│   │   │       └── transcript.txt
+│   │   ├── sHEwTKEDVM0_20250326_135948
+│   │   │   ├── audio
+│   │   │   ├── final
+│   │   │   ├── metadata.json
+│   │   │   ├── processed
+│   │   │   │   ├── chapter_chunks
+│   │   │   │   │   ├── original_chapter_chunk_1.txt
+│   │   │   │   │   └── prompt_chapter_chunk_1.txt
+│   │   │   │   ├── chapter_chunks_info.json
+│   │   │   │   ├── chapters_info.json
+│   │   │   │   ├── master_document.txt
+│   │   │   │   └── master_document_prompt.txt
+│   │   │   └── raw
+│   │   │       ├── transcript.json
+│   │   │       └── transcript.txt
+│   │   ├── sHEwTKEDVM0_20250326_140712
+│   │   │   ├── audio
+│   │   │   ├── final
+│   │   │   ├── metadata.json
+│   │   │   ├── processed
+│   │   │   │   ├── chapter_chunks
+│   │   │   │   │   ├── original_chapter_chunk_1.txt
+│   │   │   │   │   └── prompt_chapter_chunk_1.txt
+│   │   │   │   ├── chapter_chunks_info.json
+│   │   │   │   ├── chapters_info.json
+│   │   │   │   ├── master_document.txt
+│   │   │   │   └── master_document_prompt.txt
+│   │   │   └── raw
+│   │   │       ├── transcript.json
+│   │   │       └── transcript.txt
+│   │   ├── sHEwTKEDVM0_20250326_141018
+│   │   │   ├── audio
+│   │   │   ├── final
+│   │   │   ├── metadata.json
+│   │   │   ├── processed
+│   │   │   │   ├── chapter_chunks
+│   │   │   │   │   ├── chunk_1_chapters_1.txt
+│   │   │   │   │   ├── chunk_2_chapters_2.txt
+│   │   │   │   │   ├── chunk_3_chapters_3.txt
+│   │   │   │   │   ├── chunk_4_chapters_4.txt
+│   │   │   │   │   ├── chunk_5_chapters_5.txt
+│   │   │   │   │   ├── original_chapter_chunk_1.txt
+│   │   │   │   │   ├── original_chapter_chunk_2.txt
+│   │   │   │   │   ├── original_chapter_chunk_3.txt
+│   │   │   │   │   ├── original_chapter_chunk_4.txt
+│   │   │   │   │   ├── original_chapter_chunk_5.txt
+│   │   │   │   │   ├── processed_chapter_chunk_1.txt
+│   │   │   │   │   ├── processed_chapter_chunk_2.txt
+│   │   │   │   │   ├── processed_chapter_chunk_3.txt
+│   │   │   │   │   ├── processed_chapter_chunk_4.txt
+│   │   │   │   │   ├── processed_chapter_chunk_5.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_1.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_2.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_3.txt
+│   │   │   │   │   ├── prompt_chapter_chunk_4.txt
+│   │   │   │   │   └── prompt_chapter_chunk_5.txt
+│   │   │   │   ├── chapter_chunks_info.json
+│   │   │   │   ├── chapter_chunks_processing_info.json
+│   │   │   │   ├── chapters_info.json
+│   │   │   │   ├── master_document.txt
+│   │   │   │   ├── master_document_prompt.txt
+│   │   │   │   ├── narrative_transcript.json
+│   │   │   │   └── narrative_transcript.txt
+│   │   │   └── raw
+│   │   │       ├── transcript.json
+│   │   │       └── transcript.txt
+│   │   └── sHEwTKEDVM0_20250326_142559
+│   │       ├── audio
+│   │       ├── final
+│   │       ├── metadata.json
+│   │       ├── processed
+│   │       │   ├── chapter_chunks
+│   │       │   │   ├── original_chapter_chunk_1.txt
+│   │       │   │   └── prompt_chapter_chunk_1.txt
+│   │       │   ├── chapter_chunks_info.json
+│   │       │   ├── chapters_info.json
+│   │       │   ├── master_document.txt
+│   │       │   └── master_document_prompt.txt
+│   │       └── raw
+│   │           ├── transcript.json
+│   │           └── transcript.txt
+│   └── videos
+│       ├── compiled
+│       └── stock
+├── debug_backend.sh
+├── diagnose.sh
+├── diagnostic.html
+├── docs_and_libariers
+│   ├── design_docs
+│   │   └── High_level_design_doc.md
+│   └── documentation_and_libaries
+│       ├── fast_api_server.md
+│       ├── lite_llm.md
+│       ├── models_context_window.md
+│       └── seleniumbase.md
+├── examples
+│   └── use_transcript_processor.py
+├── foreground_startup.sh
+├── frontend
+│   ├── README.md
+│   ├── frontend.log
+│   ├── frontend_log.txt
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── public
+│   │   ├── index.html
+│   │   └── manifest.json
+│   ├── src
+│   │   ├── App.js
+│   │   ├── assets
+│   │   │   ├── images
+│   │   │   └── styles
+│   │   │       └── index.css
+│   │   ├── components
+│   │   │   ├── Navbar.js
+│   │   │   ├── layout
+│   │   │   └── transcript
+│   │   ├── index.js
+│   │   ├── mocks
+│   │   │   └── apiResponses.js
+│   │   ├── pages
+│   │   │   ├── DownloadsPage.js
+│   │   │   ├── InputPage.js
+│   │   │   ├── NotFound.js
+│   │   │   └── OverviewPage.js
+│   │   ├── services
+│   │   │   └── api.js
+│   │   └── utils
+│   │       ├── index.js
+│   │       ├── ttsOptions.js
+│   │       ├── utils.js
+│   │       └── utils.test.js
+│   └── temp
+│       └── simple_api.js
+├── frontend.pid
+├── large_transcript_processor.log
+├── logs
+│   ├── backend.log
+│   ├── backend_server.log
+│   └── frontend.log
+├── logs.sh
+├── outputs
+│   ├── test_audio
+│   │   └── test_tss_output.wav
+│   └── voice_samples
+│       ├── af_bella_sample.wav
+│       ├── af_nicole_sample.wav
+│       ├── af_sarah_sample.wav
+│       ├── af_sky_sample.wav
+│       ├── am_adam_sample.wav
+│       ├── am_michael_sample.wav
+│       ├── bf_emma_sample.wav
+│       ├── bf_isabella_sample.wav
+│       ├── bm_george_sample.wav
+│       └── bm_lewis_sample.wav
+├── quick_clean.sh
+├── requirements.txt
+├── scripts
+│   ├── clean_transcript.py
+│   ├── create_spinoff_transcript.py
+│   ├── fetch_youtube_transcript.py
+│   ├── generate_audio.py
+│   ├── generate_test_transcript.py
+│   ├── list_transcripts.py
+│   ├── process_large_transcript.py
+│   ├── process_transcript.py
+│   ├── search_transcripts.py
+│   ├── test_kokoro.py
+│   ├── test_voice_options.py
+│   └── youtube_to_audio.py
+├── shutdown.sh
+├── spinoff_transcript.log
+├── src
+│   ├── __init__.py
+│   ├── config
+│   │   ├── __init__.py
+│   │   └── config.py
+│   ├── final_assembly
+│   │   ├── __init__.py
+│   │   └── assembler.py
+│   ├── main.py
+│   ├── transcript_pipeline
+│   │   ├── __init__.py
+│   │   ├── fetcher
+│   │   │   ├── __init__.py
+│   │   │   ├── fetch_and_store.py
+│   │   │   └── youtube_transcript.py
+│   │   ├── manager
+│   │   │   └── __init__.py
+│   │   ├── processor
+│   │   │   ├── __init__.py
+│   │   │   ├── ai_processor.py
+│   │   │   ├── chunked_processor.py
+│   │   │   ├── custom_prompts.py
+│   │   │   ├── gemini_processor.py
+│   │   │   ├── litellm_processing.py
+│   │   │   ├── processor_base.py
+│   │   │   └── segmenter.py
+│   │   ├── tts
+│   │   │   ├── __init__.py
+│   │   │   └── tts_generator.py
+│   │   └── utils
+│   │       ├── __init__.py
+│   │       └── config.py
+│   ├── utils
+│   │   ├── __init__.py
+│   │   ├── logger.py
+│   │   ├── transcript_cleaner.py
+│   │   └── validators.py
+│   └── video_pipeline
+│       ├── __init__.py
+│       ├── compiler
+│       │   ├── __init__.py
+│       │   └── video_compiler.py
+│       └── scraper
+│           ├── __init__.py
+│           ├── freepik_scraper.py
+│           └── pixabay_scraper.py
+├── start.sh
+├── start_port5001.sh
+├── startup.sh
+├── test.wav
+├── test_kokoro.py
+├── test_lite_llm_gemini_flashlite.py
+├── test_output.wav
+├── tests
+│   └── transcript_pipeline
+│       └── test_youtube_transcript.py
+├── track_and_trace
+│   ├── chapter_aligned_chunking.md
+│   ├── chapter_aligned_chunking_functions.md
+│   ├── chapter_aligned_chunking_improvements.md
+│   ├── chapter_aligned_chunking_process.md
+│   ├── chapter_aligned_chunking_prompts.md
+│   ├── chapter_aligned_chunking_workflow.md
+│   ├── chunked_processor_implementation.md
+│   ├── circular_import_fix_implementation.md
+│   ├── directory_structure_setup.md
+│   ├── flask_youtube_integration.md
+│   ├── form_submission_fix.md
+│   ├── frontend_implementation.md
+│   ├── gemini_integration_notes.md
+│   ├── gemini_integration_pr.md
+│   ├── git_large_files_management.md
+│   ├── large_transcript_implementation_summary.md
+│   ├── large_transcript_processing.md
+│   ├── large_transcript_processor.md
+│   ├── master_document_prompting.md
+│   ├── network_issue_resolution.md
+│   ├── one_command_startup.md
+│   ├── resolving_circular_imports.md
+│   ├── spinoff_transcript_feature.md
+│   ├── startup_process.md
+│   ├── system_prompts_documentation.md
+│   ├── template_to_use_for_all.md
+│   ├── text_to_speech_implementation.md
+│   ├── transcript_ai_processor.md
+│   ├── transcript_fetcher_and_storage.md
+│   ├── transcript_utilities.md
+│   ├── tts_implementation.md
+│   ├── very_large_transcript_processor.md
+│   ├── youtube_to_audio_pipeline.md
+│   └── youtube_transcript_fetcher.md
+├── tree
+└── youtube_to_audio.log
+
+178 directories, 624 files
