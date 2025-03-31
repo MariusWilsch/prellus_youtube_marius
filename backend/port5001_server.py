@@ -7,6 +7,9 @@ Features:
 - Load previously saved prompts
 """
 
+from rich.install import install
+
+install()
 
 from flask_cors import CORS
 import sys
