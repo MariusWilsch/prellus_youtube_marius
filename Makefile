@@ -55,8 +55,13 @@ clean: stop-all
 	-docker rmi $(FRONTEND_NAME) 2>/dev/null || true
 	-docker rmi $(BACKEND_NAME) 2>/dev/null || true
 
-# Development mode (if needed)
+# Development modes
 dev:
-	@echo "Starting development servers..."
+	@echo "Starting development servers locally..."
 	cd frontend && npm run dev & \
-	cd app && python -m uvicorn main:app --reload --port 8000 
+	cd app && python main.py
+
+# Docker development mode with hot reloading
+dev-docker:
+	@echo "🚀 Starting development environment with hot reloading..."
+	docker compose -f docker-compose.yml -f docker-compose.dev.yml up
