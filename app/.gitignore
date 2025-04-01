@@ -37,7 +37,6 @@ ENV/
 # Project specific
 data/
 *.log
-config.yaml
 test.html
 
 # Jupyter Notebook

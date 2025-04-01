@@ -1,0 +1,51 @@
+ai:
+  max_retries: 3
+  max_tokens: 8192
+  model: gemini-2.0-flash-lite
+  retry_delay: 2
+  temperature: 0.7
+chunked_processing:
+  chunk_size: 25000
+  max_output_length: 28000
+  max_retries: 3
+  min_output_length: 18000
+large_transcript_threshold: 20000
+segmentation:
+  max_segment_size: 30000
+  min_segment_size: 15000
+  overlap_size: 1000
+  paragraph_break_weight: 3
+  sentence_break_weight: 2
+  speaker_change_weight: 5
+  target_segment_size: 25000
+  topic_change_weight: 4
+system_prompts:
+  standard: 'You are an educational content editor who transforms video transcripts
+    into engaging narratives.
+
+    Your task is to convert this raw transcript into a more elegant, flowing narrative
+    while preserving:
+
+
+    1. All factual information and key points
+
+    2. The same educational value and depth
+
+    3. Technical accuracy and explanations
+
+    4. The order and sequence of topics
+
+
+    You should improve:
+
+    - Readability and flow
+
+    - Grammar and sentence structure
+
+    - Organization into clear paragraphs
+
+    - Removal of verbal filler and repetition
+
+
+    Your output should read as a cohesive, educational narrative - as if it were written,
+    not spoken. '
