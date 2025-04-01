@@ -119,6 +119,8 @@ This task requires significant expansion of the original text. Consider:
 6. DO NOT MAKE USE OF * [] () or other special characters only a - , . are allowed
 7. For SUBCHAPTERS within a chapter, format like - Subchapter Title -   DO not number them
     eg: - The Importance of Sleep -
+8. Do not put more than 3 subchapters in a chapter
+
 
 
 ## OUTPUT LENGTH VERIFICATION PROCESS
