@@ -28,7 +28,7 @@ export function useTranscriptManagement() {
   // Extract form state values for convenience
   const url = formState?.url || "";
   const title = formState?.title || "";
-  const duration = formState?.duration || 30;
+  const duration = formState?.duration || "";
   const promptName = formState?.promptName || "";
   const promptData = formState?.promptData || {
     yourRole: "",
@@ -80,7 +80,7 @@ export function useTranscriptManagement() {
     updateFormState({
       url: "",
       title: "",
-      duration: 30,
+      duration: "",
       promptData: {
         yourRole: "",
         scriptStructure: "",
@@ -112,11 +112,14 @@ export function useTranscriptManagement() {
       return { success: false, error: validation.error };
     }
 
+    // Only parse duration if it's not empty
+    const durationValue = duration === "" ? undefined : parseInt(duration);
+
     processTranscript({
       url,
       title,
       promptData,
-      duration: parseInt(duration),
+      duration: durationValue,
     });
 
     return { success: true, error: null };
@@ -129,11 +132,14 @@ export function useTranscriptManagement() {
       return { success: false, error: validation.error };
     }
 
+    // Only parse duration if it's not empty
+    const durationValue = duration === "" ? undefined : parseInt(duration);
+
     processWithModel({
       url,
       title,
       promptData,
-      duration: parseInt(duration),
+      duration: durationValue,
       modelId,
     });
 

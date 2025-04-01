@@ -45,12 +45,12 @@ export function TranscriptForm() {
             type="number"
             value={duration}
             onChange={(e) => setDuration(e.target.value)}
-            min="1"
             max="180"
             disabled={isProcessing}
           />
           <p className="text-sm text-muted-foreground">
-            Maximum length of the video to process (1-180 minutes)
+            Maximum length of the video to process (up to 180 minutes, leave
+            empty for no limit)
           </p>
         </div>
       </CardContent>
