@@ -1,0 +1,1 @@
+export { useTranscriptManagement } from "./useTranscriptManagement";
