@@ -58,7 +58,7 @@ def process_with_llm(
 def process_llm(
     context: str,
     system_prompt: Optional[str] = None,
-    model: str = "gemini-2.0-flash-lite",
+    model: str = None,  # Changed from hardcoded default to None
     max_tokens: int = 4000,
     temperature: float = 0.7,
     max_retries: int = 3,
@@ -79,6 +79,25 @@ def process_llm(
     Returns:
         The processed text response from the LLM
     """
+    # Use default model from config.yaml if none specified
+    
+    if model is None:
+        project_root = str(Path(__file__).parent.parent.parent)
+        config_path = os.path.join(project_root, "app/config/config.yaml")
+        
+        try:
+            if os.path.exists(config_path):
+                with open(config_path, 'r') as f:
+                    config = yaml.safe_load(f) or {}
+                model = config.get('ai', {}).get('model', "gemini-2.0-flash-lite")
+            else:
+                model = "gemini-2.0-flash-lite"  # Fallback default
+        except Exception as e:
+            logger.warning(f"Error loading model from config: {e}. Using default model.")
+            model = "gemini-2.0-flash-lite"  # Fallback default
+    else:
+        print(f"Using model: {model}")
+        
     # Check for model-specific API keys
     _check_api_key_for_model(model)
     
@@ -153,7 +172,7 @@ def process_llm(
         logger.info(f"Attempting fallback to model: {fallback_model}")
         try:
             return process_llm(
-                text=context,
+                context=context,
                 system_prompt=system_prompt,
                 model=fallback_model,
                 max_tokens=max_tokens,
@@ -305,3 +324,6 @@ def _check_api_key_for_model(model: str) -> None:
         error_msg = f"Missing {key_name} for {provider} model: {model}"
         logger.error(error_msg)
         raise ValueError(error_msg)
+    
+
+

@@ -572,8 +572,9 @@ class ChunkedProcessor:
             # Process the entire transcript
             master_document = process_llm(
                 context=transcript_text,
+                model=config.get("ai", {}).get("model"),
                 system_prompt=master_document_prompt,
-                max_tokens=100000,
+                max_tokens=4096,
                 temperature=0.7,
             )
 
@@ -698,7 +699,7 @@ class ChunkedProcessor:
 
             # Process this chunk
             chunk_master_doc = process_llm(
-                context=chunk, system_prompt=prompt, max_tokens=100000, temperature=0.7
+                context=chunk, system_prompt=prompt, model=config.get("ai", {}).get("model"),max_tokens=4096, temperature=0.7
             )
 
             # Log the output size
@@ -760,6 +761,10 @@ class ChunkedProcessor:
         Returns:
             A master document with detailed chapter outlines
         """
+        # Import modules at function level to avoid scope issues
+        import os
+        import time
+        
         original_length = len(transcript_text)
         scaling_factor = target_length / original_length
 
@@ -773,6 +778,9 @@ class ChunkedProcessor:
         prompt_additional_instructions = config.get("ai", {}).get(
             "prompt_additional_instructions", ""
         )
+        
+        # Get model from config
+        model = config.get("ai", {}).get("model")
 
         # Calculate how many output chapters we need based on target length
         max_chapter_size = 15000  # Max API output size
@@ -833,7 +841,8 @@ class ChunkedProcessor:
                 topic_outline = process_llm(
                     context=segment_text,
                     system_prompt=topic_prompt,
-                    max_tokens=100000,
+                    model=model,  # Use model from config
+                    max_tokens=4096,
                     temperature=0.7,
                 )
 
@@ -918,9 +927,16 @@ class ChunkedProcessor:
         Returns:
             The expanded transcript as a string
         """
+        # Import modules at function level to avoid scope issues
+        import os
+        import time
+        
         original_length = len(transcript_text)
         target_length = config.get("ai", {}).get("length_in_chars", original_length)
         scaling_factor = target_length / original_length if original_length > 0 else 1.0
+        
+        # Get model from config
+        model = config.get("ai", {}).get("model")
 
         logger.info(
             f"Processing transcript with extreme expansion ({scaling_factor:.2f}x)"
@@ -1022,11 +1038,11 @@ class ChunkedProcessor:
 
             while not success and retries < self.max_retries:
                 try:
-
                     new_chapter_text = process_llm(
                         context=segment["text"],
                         system_prompt=prompt,
-                        max_tokens=100000,
+                        model=model,  # Use model from config
+                        max_tokens=4096,
                         temperature=0.7,
                     )
 
@@ -1330,14 +1346,13 @@ class ChunkedProcessor:
 
         # Extract structured prompt components
         prompt_role = config.get("ai", {}).get("prompt_role", "")
-        prompt_script_structure = config.get("ai", {}).get(
-            "prompt_script_structure", ""
-        )
+        prompt_script_structure = config.get("ai", {}).get("prompt_script_structure", "")
         prompt_tone_style = config.get("ai", {}).get("prompt_tone_style", "")
         prompt_retention_flow = config.get("ai", {}).get("prompt_retention_flow", "")
-        prompt_additional_instructions = config.get("ai", {}).get(
-            "prompt_additional_instructions", ""
-        )
+        prompt_additional_instructions = config.get("ai", {}).get("prompt_additional_instructions", "")
+        
+        # Get model from config
+        model = config.get("ai", {}).get("model")
 
         logger.info(f"Original length: {original_length} characters")
         logger.info(f"Target length: {target_length} characters")
@@ -1485,8 +1500,8 @@ class ChunkedProcessor:
                     processed_chunk = process_llm(
                         context=chunk_text,
                         system_prompt=prompt_with_context,
-                        model="gemini-2.0-flash-lite",
-                        max_tokens=100000,
+                        model=model,  # Use model from config instead of hardcoded value
+                        max_tokens=4096,
                         temperature=0.7,
                     )
 
@@ -1578,8 +1593,8 @@ class ChunkedProcessor:
                     processed_chunk = process_llm(
                         context=chunk_text,
                         system_prompt=simple_prompt,
-                        model="gemini-2.0-flash-lite",
-                        max_tokens=100000,
+                        model=model,  # Use model from config instead of hardcoded value
+                        max_tokens=4096,
                         temperature=0.7,
                     )
 
@@ -1672,30 +1687,6 @@ class ChunkedProcessor:
             return first_part[:50] + "..."
         return first_part
 
-    def _create_chapter_instructions(self, chunk: Dict[str, Any]) -> str:
-        """
-        Create specific instructions based on the chapters in the chunk.
-
-        Args:
-            chunk: The chunk containing chapter information
-
-        Returns:
-            A string with chapter-specific instructions
-        """
-        chapter_numbers = chunk["chapter_numbers"]
-
-        if len(chapter_numbers) == 1:
-            instructions = f"\n\nCHAPTER SPECIFIC INSTRUCTIONS:\nThis chunk contains ONLY Chapter {chapter_numbers[0]}. Include this chapter heading in your output."
-        else:
-            instructions = f"\n\nCHAPTER SPECIFIC INSTRUCTIONS:\nThis chunk contains Chapters {chapter_numbers[0]} through {chapter_numbers[-1]}. Make sure to include ALL these chapter headings in your output IN THE CORRECT ORDER."
-
-        # Add more specific instructions for each chapter
-        instructions += "\n\nInclude these chapter headings exactly as shown:"
-        for chapter_num in chapter_numbers:
-            instructions += f"\n- Chapter {chapter_num}"
-
-        return instructions
-
     def _process_chunks_with_continuity(
         self,
         transcript_text: str,
@@ -1726,6 +1717,9 @@ class ChunkedProcessor:
         prompt_additional_instructions = config.get("ai", {}).get(
             "prompt_additional_instructions", ""
         )
+        
+        # Get model from config
+        model = config.get("ai", {}).get("model")
 
         # Split into processing chunks (20K characters each)
         chunks = []
@@ -1872,8 +1866,8 @@ class ChunkedProcessor:
                     processed_chunk = process_llm(
                         context=chunk,
                         system_prompt=prompt_with_context,
-                        model="gemini-2.0-flash-lite",
-                        max_tokens=100000,
+                        model=model,  # Use model from config
+                        max_tokens=4096,
                         temperature=0.7,
                     )
 
@@ -1933,6 +1927,7 @@ class ChunkedProcessor:
                     retries += 1
                     time.sleep(2)  # Wait before retry
 
+                # If all retries failed, use a placeholder or simplified version
             # If all retries failed, use a placeholder or simplified version
             if not success:
                 logger.warning(
@@ -1962,8 +1957,8 @@ class ChunkedProcessor:
                     processed_chunk = process_llm(
                         context=chunk,
                         system_prompt=simple_prompt,
-                        model="gemini-2.0-flash-lite",
-                        max_tokens=100000,
+                        model=model,  # Use model from config instead of hardcoded value
+                        max_tokens=4096,
                         temperature=0.7,
                     )
 
@@ -2084,8 +2079,8 @@ def process_large_transcript(
         )
 
     processor = ChunkedProcessor(config)
-    ai_processor = GeminiProcessor(config)
-
+    # ai_processor = GeminiProcessor(config)
+    ai_processor = None
     return processor.process(
         transcript_text,
         ai_processor,

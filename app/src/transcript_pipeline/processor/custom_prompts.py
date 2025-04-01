@@ -5,6 +5,8 @@ This module contains helper functions for generating structured prompts
 for use in the transcript processing pipeline.
 """
 
+import os
+
 def create_master_document_for_expansion_prompt(transcript_text, target_length, chapter_number, segment_text, master_document=None):
     """
     Creates a structured prompt for expanding a chapter from a small segment of text.
@@ -19,6 +21,8 @@ def create_master_document_for_expansion_prompt(transcript_text, target_length, 
     Returns:
         A formatted prompt template with placeholders for prompt components
     """
+
+    import os
     # Calculate expansion ratio
     expansion_ratio = target_length / len(segment_text) if len(segment_text) > 0 else 0
     min_target_length = int(target_length)

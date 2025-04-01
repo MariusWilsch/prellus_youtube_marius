@@ -158,7 +158,7 @@ class GeminiProcessor(TranscriptProcessorInterface):
         
         self.logger.info(f"Using model ID: {self.model_id}")
         
-        self.max_tokens = config.get("max_tokens", 8192)
+        self.max_tokens = config.get("max_tokens", 4096)
         self.temperature = config.get("temperature", 0.7)
     
     def process_text(self, text: str, system_prompt: Optional[str] = None) -> str:
@@ -253,7 +253,7 @@ class TranscriptAIProcessor(TranscriptProcessorInterface):
             
             self.logger.info(f"Using model ID: {self.model_id}")
         
-        self.max_tokens = config.get("max_tokens", 8192)
+        self.max_tokens = config.get("max_tokens", 4096)
         self.temperature = config.get("temperature", 0.7)
         self.logger.info(f"Initialized AI Processor with model: {self.model}")
         
