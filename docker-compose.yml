@@ -4,9 +4,10 @@ services:
   backend:
     image: prellus_backend:latest
     platform: linux/amd64
+    pull_policy: never
     container_name: prellus_backend_container
     ports:
-      - "8000:8000"
+      - "5001:5001"
     environment:
       - PYTHONUNBUFFERED=1
     networks:
@@ -14,7 +15,7 @@ services:
 
   frontend:
     image: prellus_frontend:latest
-    platform: linux/amd64
+    pull_policy: never
     container_name: prellus_frontend_container
     ports:
       - "3000:3000"

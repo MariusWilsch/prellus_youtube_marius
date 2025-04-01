@@ -21,11 +21,11 @@ help:
 # Build commands
 frontend-build:
 	@echo "🏗️  Building frontend..."
-	cd frontend && nixpacks build . --name $(FRONTEND_NAME)
+	cd frontend && nixpacks build . --name $(FRONTEND_NAME) --platform linux/amd64
 
 backend-build:
 	@echo "🏗️  Building backend..."
-	cd backend && nixpacks build . --name $(BACKEND_NAME)
+	cd backend && nixpacks build . --name $(BACKEND_NAME) --platform linux/amd64
 
 build-all: frontend-build backend-build
 
