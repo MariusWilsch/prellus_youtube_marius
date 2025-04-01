@@ -71,7 +71,7 @@ export function ProviderCard({ provider, displayName, description }) {
           <div className="relative flex-1">
             <Input
               type={showKey ? "text" : "password"}
-              value={newApiKey[provider] || ""}
+              value={newApiKey.provider === provider ? newApiKey.key : ""}
               onChange={(e) => handleApiKeyChange(provider, e.target.value)}
               placeholder={
                 configured

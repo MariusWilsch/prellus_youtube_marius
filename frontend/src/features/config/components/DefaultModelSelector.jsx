@@ -83,23 +83,6 @@ export function DefaultModelSelector() {
             )}
 
             <SelectGroup>
-              <SelectLabel>OpenAI Models</SelectLabel>
-              {modelOptions
-                .filter((model) => model.provider === "openai")
-                .map((model) => (
-                  <SelectItem
-                    key={model.value}
-                    value={model.value}
-                    disabled={!isProviderConfigured(model.provider)}
-                  >
-                    {model.label}
-                    {!isProviderConfigured(model.provider) &&
-                      " (API key required)"}
-                  </SelectItem>
-                ))}
-            </SelectGroup>
-
-            <SelectGroup>
               <SelectLabel>Google Gemini Models</SelectLabel>
               {modelOptions
                 .filter((model) => model.provider === "gemini")
@@ -120,23 +103,6 @@ export function DefaultModelSelector() {
               <SelectLabel>Anthropic Claude Models</SelectLabel>
               {modelOptions
                 .filter((model) => model.provider === "anthropic")
-                .map((model) => (
-                  <SelectItem
-                    key={model.value}
-                    value={model.value}
-                    disabled={!isProviderConfigured(model.provider)}
-                  >
-                    {model.label}
-                    {!isProviderConfigured(model.provider) &&
-                      " (API key required)"}
-                  </SelectItem>
-                ))}
-            </SelectGroup>
-
-            <SelectGroup>
-              <SelectLabel>DeepSeek Models</SelectLabel>
-              {modelOptions
-                .filter((model) => model.provider === "deepseek")
                 .map((model) => (
                   <SelectItem
                     key={model.value}

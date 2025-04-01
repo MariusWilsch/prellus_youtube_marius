@@ -29,30 +29,13 @@ export function useConfigManagement() {
 
   // Available providers
   const availableProviders = [
-    { id: "openai", name: "OpenAI" },
     { id: "gemini", name: "Google Gemini" },
     { id: "anthropic", name: "Anthropic Claude" },
-    { id: "deepseek", name: "DeepSeek" },
-    { id: "qwen", name: "Qwen" },
   ];
 
   // Model options with provider grouping
   const modelOptions = useMemo(
     () => [
-      // OpenAI Models
-      { value: "gpt-4o", label: "OpenAI GPT-4o", provider: "openai" },
-      {
-        value: "gpt-4.5-preview",
-        label: "OpenAI GPT-4.5 Preview",
-        provider: "openai",
-      },
-      { value: "gpt-4-turbo", label: "OpenAI GPT-4 Turbo", provider: "openai" },
-      {
-        value: "gpt-3.5-turbo",
-        label: "OpenAI GPT-3.5 Turbo",
-        provider: "openai",
-      },
-
       // Gemini Models
       {
         value: "gemini-2.5-pro-exp-03-25",
@@ -67,16 +50,6 @@ export function useConfigManagement() {
       {
         value: "gemini-2.0-flash-lite",
         label: "Google Gemini 2.0 Flash Lite",
-        provider: "gemini",
-      },
-      {
-        value: "gemini-1.5-pro",
-        label: "Google Gemini 1.5 Pro",
-        provider: "gemini",
-      },
-      {
-        value: "gemini-1.5-flash",
-        label: "Google Gemini 1.5 Flash",
         provider: "gemini",
       },
 
@@ -96,14 +69,6 @@ export function useConfigManagement() {
         label: "Anthropic Claude 3.5 Haiku",
         provider: "anthropic",
       },
-      {
-        value: "claude-3-opus-20240229",
-        label: "Anthropic Claude 3 Opus",
-        provider: "anthropic",
-      },
-
-      // DeepSeek Models
-      { value: "deepseek-r1", label: "DeepSeek R1", provider: "deepseek" },
     ],
     []
   );
