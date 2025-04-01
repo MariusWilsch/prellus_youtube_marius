@@ -25,7 +25,7 @@ frontend-build:
 
 backend-build:
 	@echo "🏗️  Building backend..."
-	cd backend && nixpacks build . --name $(BACKEND_NAME) --platform linux/amd64
+	cd app && nixpacks build . --name $(BACKEND_NAME) --platform linux/amd64
 
 build-all: frontend-build backend-build
 
@@ -38,8 +38,11 @@ run-all:
 	@echo "Backend: http://localhost:8000"
 
 # View logs
-logs:
+log:
 	docker compose logs -f
+
+stop-app:
+	docker compose stop $(BACKEND_NAME)
 
 # Stop commands
 stop-all:
@@ -56,4 +59,4 @@ clean: stop-all
 dev:
 	@echo "Starting development servers..."
 	cd frontend && npm run dev & \
-	cd backend && python -m uvicorn main:app --reload --port 8000 
+	cd app && python -m uvicorn main:app --reload --port 8000 

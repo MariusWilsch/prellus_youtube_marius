@@ -118,7 +118,7 @@ If you need to start the servers manually:
 
 1. Start the backend:
 ```bash
-cd backend
+cd app
 python3 port5001_server.py
 ```
 
