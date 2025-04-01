@@ -11,8 +11,6 @@ export function DownloadsPage() {
 
   return (
     <div className="container mx-auto py-6">
-      <h1 className="text-3xl font-bold mb-6">Downloads</h1>
-
       {isLoadingProjects ? (
         <div className="space-y-4">
           <Skeleton className="h-[200px] w-full rounded-lg" />

@@ -8,28 +8,52 @@ import { extractYoutubeId } from "@/lib/utils";
  * Builds on shared data hooks to add feature-specific business logic
  */
 export function useTranscriptManagement() {
-  // Feature-specific state
-  const [url, setUrl] = useState("");
-  const [title, setTitle] = useState("");
-  const [duration, setDuration] = useState(30);
-  const [promptName, setPromptName] = useState("");
+  // UI state (not persisted)
   const [showSavePrompt, setShowSavePrompt] = useState(false);
   const [showPromptList, setShowPromptList] = useState(false);
 
-  // Structured prompt fields
-  const [promptData, setPromptData] = useState({
+  // Use the shared data hooks
+  const {
+    transcripts,
+    processTranscript,
+    processWithModel,
+    isProcessing,
+    formState,
+    isLoadingFormState,
+    updateFormState,
+  } = useTranscriptData();
+
+  const { prompts, savePrompt, getPrompt, isSaving } = usePromptData();
+
+  // Extract form state values for convenience
+  const url = formState?.url || "";
+  const title = formState?.title || "";
+  const duration = formState?.duration || 30;
+  const promptName = formState?.promptName || "";
+  const promptData = formState?.promptData || {
     yourRole: "",
     scriptStructure: "",
     toneAndStyle: "",
     retentionAndFlow: "",
     additionalInstructions: "",
-  });
+  };
 
-  // Use the shared data hooks
-  const { transcripts, processTranscript, processWithModel, isProcessing } =
-    useTranscriptData();
+  // Wrapper functions to update form state
+  const setUrl = (newUrl) => {
+    updateFormState({ url: newUrl });
+  };
 
-  const { prompts, savePrompt, getPrompt, isSaving } = usePromptData();
+  const setTitle = (newTitle) => {
+    updateFormState({ title: newTitle });
+  };
+
+  const setDuration = (newDuration) => {
+    updateFormState({ duration: newDuration });
+  };
+
+  const setPromptName = (newPromptName) => {
+    updateFormState({ promptName: newPromptName });
+  };
 
   // Auto-populate title when URL changes
   useEffect(() => {
@@ -39,27 +63,31 @@ export function useTranscriptManagement() {
         setTitle(`YouTube Transcript - ${videoId}`);
       }
     }
-  }, [url, title]);
+  }, [url, title, setTitle]);
 
   // Handle changes to prompt fields
   const handlePromptChange = (field, value) => {
-    setPromptData({
-      ...promptData,
-      [field]: value,
+    updateFormState({
+      promptData: {
+        ...promptData,
+        [field]: value,
+      },
     });
   };
 
   // Reset form
   const resetForm = () => {
-    setUrl("");
-    setTitle("");
-    setDuration(30);
-    setPromptData({
-      yourRole: "",
-      scriptStructure: "",
-      toneAndStyle: "",
-      retentionAndFlow: "",
-      additionalInstructions: "",
+    updateFormState({
+      url: "",
+      title: "",
+      duration: 30,
+      promptData: {
+        yourRole: "",
+        scriptStructure: "",
+        toneAndStyle: "",
+        retentionAndFlow: "",
+        additionalInstructions: "",
+      },
     });
   };
 
@@ -133,7 +161,9 @@ export function useTranscriptManagement() {
       const result = await getPrompt(promptId).refetch();
 
       if (result.data && result.data.promptData) {
-        setPromptData(result.data.promptData);
+        updateFormState({
+          promptData: result.data.promptData,
+        });
         return { success: true, error: null };
       } else {
         return { success: false, error: "Failed to load prompt data" };

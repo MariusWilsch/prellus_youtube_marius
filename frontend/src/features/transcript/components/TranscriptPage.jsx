@@ -25,10 +25,6 @@ export function TranscriptPage() {
 
   return (
     <div className="container mx-auto py-6 space-y-6">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold">YouTube Transcript Processor</h1>
-      </div>
-
       <Tabs
         defaultValue="basic"
         value={activeTab}
@@ -44,12 +40,8 @@ export function TranscriptPage() {
           <TranscriptForm />
 
           <div className="flex justify-between mt-6">
-            <div>
-              <Button
-                onClick={handleSubmit}
-                disabled={management.isProcessing}
-                className="mr-2"
-              >
+            <div className="flex items-center space-x-2">
+              <Button onClick={handleSubmit} disabled={management.isProcessing}>
                 {management.isProcessing ? "Processing..." : "Process Video"}
               </Button>
 

@@ -16,11 +16,13 @@ src/
 ├── shared/                 # Cross-feature shared code
 │   ├── components/        # Shared UI components (always flat, no subfolders)
 │   │   └── index.js       # Barrel export file
-│   ├── ui/                # shadcn/ui components (never modify these)
-│   │   └── index.js       # Barrel export file
 │   ├── data/              # ALL data access hooks go here
 │   │   └── index.js       # Data hooks barrel export
 │   └── index.js           # Shared barrel export
+│
+├── components/            # UI components
+│   └── ui/                # shadcn/ui components (never modify these)
+│       └── index.js       # Barrel export file
 │
 ├── lib/                   # Library code
 │   └── utils.js           # Utility functions
@@ -83,9 +85,9 @@ import { useUserData } from '@/shared/data/useUserData';
     <ui_element_decision>
       <subsection_title>2. Is this UI element available in shadcn/ui?</subsection_title>
       <content>
-        Check if it already exists in `/shared/ui` - never modify these pre-configured components.
+        Check if it already exists in `/components/ui` - never modify these pre-configured components.
 
-        **Examples:Button, Input, Card, Dialog, Table
+        **Examples:** Button, Input, Card, Dialog, Table
       </content>
     </ui_element_decision>
     
@@ -195,7 +197,7 @@ export function useUserManagement() {
         <code_block>
 // shared/data/useUserData.js
 import { database } from '@/core/services';
-import { toast } from '@/shared/ui';
+import { toast } from '@/components/ui/sonner';
 
 export function useUserData() {
   const queryClient = useQueryClient();
@@ -256,7 +258,7 @@ export function useUserData() {
         <code_block>
 // features/admin/components/UserList.js
 import { useUserData } from '@/shared/data/useUserData';
-import { Table } from '@/shared/ui/table';
+import { Table } from '@/components/ui/table';
 
 export function UserList() {
   const { users, isLoading } = useUserData();

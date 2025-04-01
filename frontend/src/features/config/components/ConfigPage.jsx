@@ -12,10 +12,6 @@ import { useConfigManagement } from "../hooks";
 export function ConfigPage() {
   return (
     <div className="container mx-auto py-6 space-y-8">
-      <div className="flex justify-between items-center">
-        <h1 className="text-3xl font-bold">API Configuration</h1>
-      </div>
-
       <div className="space-y-8">
         <Card>
           <CardHeader>

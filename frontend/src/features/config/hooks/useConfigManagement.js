@@ -110,7 +110,11 @@ export function useConfigManagement() {
 
   // Check if a provider has an API key configured
   const isProviderConfigured = (providerId) => {
-    return apiKeys?.some((key) => key.provider === providerId) || false;
+    return (
+      (Array.isArray(apiKeys) &&
+        apiKeys.some((key) => key.provider === providerId)) ||
+      false
+    );
   };
 
   // Get models for a specific provider

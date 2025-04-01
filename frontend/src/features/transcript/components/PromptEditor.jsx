@@ -41,7 +41,11 @@ export function PromptEditor() {
         </div>
       </CardHeader>
       <CardContent>
-        <Accordion type="multiple" defaultValue={["role"]} className="w-full">
+        <Accordion
+          type="multiple"
+          defaultValue={["role", "structure", "tone", "retention"]}
+          className="w-full"
+        >
           <AccordionItem value="role">
             <AccordionTrigger>Your Role</AccordionTrigger>
             <AccordionContent>
