@@ -7,4 +7,5 @@ litellm
 Flask
 Flask-Cors
 python-dotenv
-rich 
+rich
+google-generativeai

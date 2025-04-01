@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/verdant/prellus_youtube_marius/backend/port5001_server.py", line 11, in <module>
+    from flask_cors import CORS
+ModuleNotFoundError: No module named 'flask_cors'

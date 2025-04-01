@@ -1,0 +1,7 @@
+# Add .dockerignore to exclude unnecessary files
+node_modules/
+__pycache__/
+*.pyc
+.git/
+.env
+data/
