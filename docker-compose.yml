@@ -4,6 +4,7 @@ services:
   backend:
     build:
       context: ./app
+      dockerfile: Dockerfile
     image: prellus_backend:latest
     platform: linux/amd64
     pull_policy: never
@@ -21,11 +22,14 @@ services:
   frontend:
     build:
       context: ./frontend
+      dockerfile: Dockerfile
     image: prellus_frontend:latest
     pull_policy: never
     container_name: prellus_frontend_container
     ports:
       - "3000:3000"
+    environment:
+      - NODE_ENV=production
     depends_on:
       - backend
     networks:
