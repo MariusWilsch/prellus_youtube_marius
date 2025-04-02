@@ -2,6 +2,8 @@ version: "3.8"
 
 services:
   backend:
+    build:
+      context: ./app
     image: prellus_backend:latest
     platform: linux/amd64
     pull_policy: never
@@ -17,6 +19,8 @@ services:
       - prellus_network
 
   frontend:
+    build:
+      context: ./frontend
     image: prellus_frontend:latest
     pull_policy: never
     container_name: prellus_frontend_container
